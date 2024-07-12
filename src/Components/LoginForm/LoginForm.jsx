@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 import { Input } from "../Input";
 import "../LoginForm/LoginForm.css";
-// import emailIcon from "../../assets/email.png";
-// import personIcon from "../../assets/person.png";
-// import passwordIcon from "../../assets/password.png";
-// import passwordIcon from "../../assets/password.png";
+import { useGlobalContext } from "../../Context";
+import "../../firebase_setup/firebase.js";
+import firebase from "firebase/compat/app";
+import { useState, useEffect } from "react";
 export const LoginForm = ({
   action,
   userName,
@@ -15,6 +15,8 @@ export const LoginForm = ({
   setPassword,
   handleSubmit,
 }) => {
+  const { handleGoogleSignIn, handleSignOut, user } = useGlobalContext();
+
   return (
     <>
       <div className="header">
@@ -24,20 +26,17 @@ export const LoginForm = ({
       <div className="inputs">
         {action === "Sign Up" && (
           <Input
-            // img={personIcon}
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
         )}
         <Input
-          //   img={emailIcon}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <Input
-          // img={passwordIcon}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -61,6 +60,10 @@ export const LoginForm = ({
         >
           Log In
         </div>
+        <div onClick={handleGoogleSignIn}>Login with google</div>
+        {/* Corrected logout button */}
+        <div onClick={handleSignOut}>Logout</div>
+        <div>{user ? "ddfsd" : ""}</div>
       </div>
     </>
   );
