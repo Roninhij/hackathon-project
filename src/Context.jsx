@@ -24,21 +24,6 @@ export const AppProvider = ({ children }) => {
   const [subscribedEvents, setSubscribedEvents] = useState({});
 
   useEffect(() => {
-    // Assuming you have a function to get the current user's ID
-    const currentUserID = getCurrentUserID(); // Implement this function based on your auth setup
-    const dbRef = firebase.database().ref("events");
-    dbRef.on("value", (snapshot) => {
-      const eventsData = snapshot.val();
-      const newSubscribedEvents = {};
-      Object.keys(eventsData).forEach((key) => {
-        newSubscribedEvents[key] =
-          !!eventsData[key].participants[currentUserID];
-      });
-      setSubscribedEvents(newSubscribedEvents);
-    });
-  }, []);
-
-  useEffect(() => {
     setUser(firebase.auth().currentUser);
     if (user) {
       console.log("User is signed in:", user.email);
@@ -55,6 +40,21 @@ export const AppProvider = ({ children }) => {
     });
 
     return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    // Assuming you have a function to get the current user's ID
+    const currentUserID = user ? user.id : null; // Implement this function based on your auth setup
+    const dbRef = firebase.database().ref("events");
+    dbRef.on("value", (snapshot) => {
+      const eventsData = snapshot.val();
+      const newSubscribedEvents = {};
+      Object.keys(eventsData).forEach((key) => {
+        newSubscribedEvents[key] =
+          !!eventsData[key].participants[currentUserID];
+      });
+      setSubscribedEvents(newSubscribedEvents);
+    });
   }, []);
 
   const handleGoogleSignIn = async () => {
@@ -174,19 +174,23 @@ export const AppProvider = ({ children }) => {
     firebase.database().ref("events").push(eventData);
   }
   const subscribeToEvent = (eventID) => {
-    const currentUserID = getCurrentUserID();
+    console.log(user);
+    const currentUserID = user.uid;
     const dbRef = firebase.database().ref(`events/${eventID}/participants`);
     dbRef.transaction((currentParticipants) => {
       if (!currentParticipants) {
         currentParticipants = {};
       }
-      currentParticipants[currentUserID] = true;
+      currentParticipants[currentUserID] = {
+        phone: user.phoneNumber,
+        email: user.email,
+      };
       return currentParticipants;
     });
   };
 
   const unsubscribeFromEvent = (eventID) => {
-    const currentUserID = getCurrentUserID();
+    const currentUserID = user ? user.id : null;
     const dbRef = firebase.database().ref(`events/${eventID}/participants`);
     dbRef.transaction((currentParticipants) => {
       if (currentParticipants) {

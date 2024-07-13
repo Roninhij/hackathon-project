@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<EventList />} />
+        <Route path="/" element={<LoginForm />} />
         <Route path="/store" element={<LoginForm />} />
         {/* Uncomment and adjust paths as needed */}
         {/* <Route path="/Update/:MacbookId" element={<Update />} /> */}

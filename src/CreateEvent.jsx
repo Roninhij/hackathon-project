@@ -6,21 +6,21 @@ function NewEventForm() {
 
   const [time, setTime] = useState("");
   const [place, setPlace] = useState("");
-  const [participants, setParticipants] = useState(0);
+  const [participantsAmount, setParticipantsAmount] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const eventData = {
       time,
       place,
-      participants,
+      participantsAmount,
     };
     addEvent(eventData);
     console.log(`Event Added: ${JSON.stringify(eventData)}`);
     // Reset form after submission
     setTime("");
     setPlace("");
-    setParticipants(0);
+    setParticipantsAmount(0);
   };
 
   return (
@@ -48,15 +48,15 @@ function NewEventForm() {
         <button
           type="button" // Explicitly set button type to "button"
           onClick={() =>
-            setParticipants((prevCount) => Math.max(prevCount - 1, 0))
+            setParticipantsAmount((prevCount) => Math.max(prevCount - 1, 0))
           } // Ensure participants count doesn't go below 0
         >
           -
         </button>
-        <span>{participants}</span>
+        <span>{participantsAmount}</span>
         <button
           type="button" // Explicitly set button type to "button"
-          onClick={() => setParticipants((prevCount) => prevCount + 1)}
+          onClick={() => setParticipantsAmount((prevCount) => prevCount + 1)}
         >
           +
         </button>
