@@ -190,7 +190,7 @@ export const AppProvider = ({ children }) => {
   };
 
   const unsubscribeFromEvent = (eventID) => {
-    const currentUserID = user ? user.id : null;
+    const currentUserID = user ? user.uid : null;
     const dbRef = firebase.database().ref(`events/${eventID}/participants`);
     dbRef.transaction((currentParticipants) => {
       if (currentParticipants) {

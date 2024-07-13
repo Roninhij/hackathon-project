@@ -11,8 +11,11 @@ function EventList() {
       <h2>All Events</h2>
       <ul>
         {Events.map((event) => {
-          const isUserParticipating = false;
-
+          const isUserParticipating =
+            event.participants &&
+            Object.values(event.participants).some(
+              (participant) => participant.email === user.email
+            );
           return (
             <li key={event.id}>
               <h3>{event.time}</h3>
