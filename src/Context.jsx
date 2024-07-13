@@ -21,28 +21,23 @@ export const AppProvider = ({ children }) => {
 
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
-  const [favorites, setFavorites] = useState([]);
+  const [subscribedEvents, setSubscribedEvents] = useState({});
 
-  const fetchFavorites = (userId) => {
-    if (!user) return; // Ensure the user is authenticated
-    const db = firebase.database();
-    db.ref(`favorites/${userId}`)
-      .once("value") // Use once instead of on to avoid memory leaks
-      .then((snapshot) => {
-        const favs = [];
-        snapshot.forEach((childSnapshot) => {
-          favs.push({
-            id: childSnapshot.key,
-            EventId: childSnapshot.val().EventId,
-            ...childSnapshot.val(),
-          });
-        });
-        setFavorites(favs);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch favorites:", error);
+  useEffect(() => {
+    // Assuming you have a function to get the current user's ID
+    const currentUserID = getCurrentUserID(); // Implement this function based on your auth setup
+    const dbRef = firebase.database().ref("events");
+    dbRef.on("value", (snapshot) => {
+      const eventsData = snapshot.val();
+      const newSubscribedEvents = {};
+      Object.keys(eventsData).forEach((key) => {
+        newSubscribedEvents[key] =
+          !!eventsData[key].participants[currentUserID];
       });
-  };
+      setSubscribedEvents(newSubscribedEvents);
+    });
+  }, []);
+
   useEffect(() => {
     setUser(firebase.auth().currentUser);
     if (user) {
@@ -72,7 +67,7 @@ export const AppProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const dbRef = firebase.database().ref("Events");
+    const dbRef = firebase.database().ref("events");
     dbRef.on("value", (snapshot) => {
       const data = snapshot.val();
       const dataArray = Object.entries(data || {}).map(([key, value]) => ({
@@ -163,14 +158,6 @@ export const AppProvider = ({ children }) => {
     }
   };
 
-  const addEvent = (Event) => {
-    const newEvent = {
-      id: createEventId(),
-      ...Event,
-    };
-    handleAddEvent(newEvent);
-  };
-
   const getCategories = () => {
     const result = {};
     Events.forEach((item) => {
@@ -182,6 +169,33 @@ export const AppProvider = ({ children }) => {
     console.log(Object.keys(result));
     setCategories(Object.keys(result));
   };
+
+  function addEvent(eventData) {
+    firebase.database().ref("events").push(eventData);
+  }
+  const subscribeToEvent = (eventID) => {
+    const currentUserID = getCurrentUserID();
+    const dbRef = firebase.database().ref(`events/${eventID}/participants`);
+    dbRef.transaction((currentParticipants) => {
+      if (!currentParticipants) {
+        currentParticipants = {};
+      }
+      currentParticipants[currentUserID] = true;
+      return currentParticipants;
+    });
+  };
+
+  const unsubscribeFromEvent = (eventID) => {
+    const currentUserID = getCurrentUserID();
+    const dbRef = firebase.database().ref(`events/${eventID}/participants`);
+    dbRef.transaction((currentParticipants) => {
+      if (currentParticipants) {
+        delete currentParticipants[currentUserID];
+      }
+      return currentParticipants;
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -189,15 +203,16 @@ export const AppProvider = ({ children }) => {
         loading,
         user,
         filteredEvents,
+        subscribeToEvent,
+        unsubscribeFromEvent,
         handleGoogleSignIn,
         filterCategories,
         setFilteredSetEvents,
         handleSignOut,
-        addEvent,
         handleAddEvent,
         handleUpdate,
         handleDelete,
-
+        addEvent,
         Events,
         categories,
       }}
