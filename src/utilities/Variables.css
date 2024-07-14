@@ -1,0 +1,14 @@
+.font-sans {
+  font-family: Arial, sans-serif;
+}
+.color-blue {
+  color: cyan;
+}
+.color-blueSecond {
+  color: #51a6dd;
+}
+.color-white {color: #ffffff;}
+
+.bg-blue {
+  background-color:lightgray;
+}
