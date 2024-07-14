@@ -36,7 +36,7 @@ function EventList() {
           return (
             <li key={event.id} className="event-item">
               <h3 className="event-time">{event.time}</h3>
-              <p className="event-place button-23">Place: {event.place}</p>
+              <p className="event-place button-89">Place: {event.place}</p>
               <h4 className="participants-header">
                 Participants: {countParticipants(event.participants)}
               </h4>
