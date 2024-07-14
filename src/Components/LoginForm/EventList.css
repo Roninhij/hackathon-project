@@ -1,6 +1,6 @@
 /* EventList.css */
 html {
-  background-color: #e1e6e9;
+  /* background-color: #e1e6e9; */
 }
 
 /* Background for the entire EventList */
@@ -37,7 +37,7 @@ html {
 .event-item:after {
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  content: "";
+  content: '';
   display: block;
   height: 100%;
   width: 100%;
@@ -181,7 +181,7 @@ html {
 }
 
 .toggle-slider::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 26px;
   width: 26px;
@@ -217,7 +217,7 @@ input:checked + .toggle-slider::before {
   cursor: pointer;
   display: inline-block;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
+    'Helvetica Neue', sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;

@@ -1,12 +1,12 @@
-* {
-  background-color: #e1e6e9;
-}
+/* * {
+  /* background-color: #e1e6e9; */
+
 .submit-container {
   margin-top: 40vh;
 }
 
 .bigHeader {
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Times New Roman', Times, serif;
   text-shadow: 10px 5px 5px grey;
   color: black;
 }
@@ -34,7 +34,7 @@
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans",
+  font-family: -apple-system, system-ui, 'Segoe UI', 'Liberation Sans',
     sans-serif;
   font-size: 40px;
   font-weight: 400;
@@ -168,4 +168,3 @@
   background: var(--background-color);
   color: var(--primary-color);
 }
-
