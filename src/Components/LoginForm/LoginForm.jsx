@@ -14,7 +14,7 @@ export const LoginForm = ({
   setEmail,
   password,
   setPassword,
-  handleSubmit,
+  // handleSubmit,
 }) => {
   const { handleGoogleSignIn, handleSignOut, user } = useGlobalContext();
 
@@ -51,18 +51,6 @@ export const LoginForm = ({
             </div>
           )}
           <div className="submit-container">
-            <div
-              className={action === "Login" ? "submit gray" : "submit"}
-              onClick={() => handleSubmit("Sign Up")}
-            >
-              Sign Up
-            </div>
-            <div
-              className={action === "Sign Up" ? "submit gray" : "submit"}
-              onClick={() => handleSubmit("Login")}
-            >
-              Log In
-            </div>
             {/*Dont delete from here please!! :)  */}
             <div onClick={handleGoogleSignIn}>Login with google</div>
             {/* Corrected logout button */}
