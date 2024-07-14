@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import { Input } from "../Input";
-import "../LoginForm/LoginForm.css";
-import { useGlobalContext } from "../../Context";
-import "../../firebase_setup/firebase.js";
-import firebase from "firebase/compat/app";
-import { useState, useEffect } from "react";
-import EventList from "./EventList.jsx";
+import { Input } from '../Input'
+import '../LoginForm/LoginForm.css'
+import { useGlobalContext } from '../../Context'
+import '../../firebase_setup/firebase.js'
+import firebase from 'firebase/compat/app'
+import { useState, useEffect } from 'react'
+import EventList from './EventList.jsx'
 export const LoginForm = ({
   action,
   userName,
@@ -16,7 +16,7 @@ export const LoginForm = ({
   setPassword,
   handleSubmit,
 }) => {
-  const { handleGoogleSignIn, handleSignOut, user } = useGlobalContext();
+  const { handleGoogleSignIn, handleSignOut, user } = useGlobalContext()
 
   return (
     <>
@@ -27,7 +27,7 @@ export const LoginForm = ({
             <div className="underline"></div>
           </div>
           <div className="inputs">
-            {action === "Sign Up" && (
+            {action === 'Sign Up' && (
               <Input
                 type="text"
                 value={userName}
@@ -45,21 +45,21 @@ export const LoginForm = ({
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          {action === "Login" && (
+          {action === 'Login' && (
             <div className="forget-password">
               Forgot Password? <span>Click Here!</span>
             </div>
           )}
           <div className="submit-container">
             <div
-              className={action === "Login" ? "submit gray" : "submit"}
-              onClick={() => handleSubmit("Sign Up")}
+              className={action === 'Login' ? 'submit gray' : 'submit'}
+              onClick={() => handleSubmit('Sign Up')}
             >
               Sign Up
             </div>
             <div
-              className={action === "Sign Up" ? "submit gray" : "submit"}
-              onClick={() => handleSubmit("Login")}
+              className={action === 'Sign Up' ? 'submit gray' : 'submit'}
+              onClick={() => handleSubmit('Login')}
             >
               Log In
             </div>
@@ -67,7 +67,7 @@ export const LoginForm = ({
             <div onClick={handleGoogleSignIn}>Login with google</div>
             {/* Corrected logout button */}
             <div onClick={handleSignOut}>Logout</div>
-            <div>{user ? "ddfsd" : ""}</div>
+            <div>{user ? 'ddfsd' : ''}</div>
           </div>
         </>
       ) : (
@@ -75,5 +75,5 @@ export const LoginForm = ({
         <EventList />
       )}
     </>
-  );
-};
+  )
+}
