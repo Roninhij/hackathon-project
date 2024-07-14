@@ -1,31 +1,31 @@
-import React, { useState } from 'react'
-import { useGlobalContext } from '../Context'
-import './CreateEvent.css'
+import React, { useState } from "react";
+import { useGlobalContext } from "../Context";
+import "./CreateEvent.css";
 
 function CreateEvent() {
-  const { addEvent } = useGlobalContext()
-  const [date, setDate] = useState('') //I add +line 33-42
-  const [time, setTime] = useState('')
-  const [place, setPlace] = useState('')
-  const [participantsAmount, setParticipantsAmount] = useState(0)
-  const [info, setInfo] = useState('') //I add +line 83-92
+  const { addEvent } = useGlobalContext();
+  const [date, setDate] = useState(""); //I add +line 33-42
+  const [time, setTime] = useState("");
+  const [place, setPlace] = useState("");
+  const [participantsAmount, setParticipantsAmount] = useState(0);
+  const [info, setInfo] = useState(""); //I add +line 83-92
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const eventData = {
       date,
       time,
       place,
       participantsAmount,
       info,
-    }
-    addEvent(eventData)
-    console.log(`Event Added: ${JSON.stringify(eventData)}`)
+    };
+    addEvent(eventData);
+    console.log(`Event Added: ${JSON.stringify(eventData)}`);
     // Reset form after submission
-    setTime('')
-    setPlace('')
-    setParticipantsAmount(0)
-  }
+    setTime("");
+    setPlace("");
+    setParticipantsAmount(0);
+  };
 
   return (
     <div className="main-div">
@@ -99,7 +99,7 @@ function CreateEvent() {
         </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default CreateEvent
+export default CreateEvent;

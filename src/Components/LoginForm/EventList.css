@@ -1,18 +1,5 @@
-* {
-}
-
-
 body {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  opacity: 0.85;
-  background: url("https://img.freepik.com/premium-photo/group-diverse-young-men-having-fun-city-park-while-lying-meadow-multiethnic-male-friends_442523-743.jpg");
-  background-repeat: repeat;
-  background-attachment: unset;
-  background-size: cover;
-
 }
-
 /* Background for the entire EventList */
 .event-list {
   padding: 20px;
@@ -22,8 +9,16 @@ body {
   align-items: flex-start; /* Align items to the start (left) */
   width: 80%; /* Center the event-list container */
   margin: 0 auto; /* Center the event-list container */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  opacity: 0.85;
+  background: url("https://img.freepik.com/premium-photo/group-diverse-young-men-having-fun-city-park-while-lying-meadow-multiethnic-male-friends_442523-743.jpg");
+  background-repeat: repeat;
+  background-attachment: unset;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
-
 /* Styling for the event list header */
 .event-list-header {
   font-size: 40px;
@@ -37,11 +32,9 @@ body {
   text-decoration-color: transparent; /* Initial state for underline animation */
   transition: text-decoration-color 0.4s ease;
 }
-
 .event-list-header:hover {
   text-decoration-color: #007bff; /* Color on hover */
 }
-
 /* Styling for each event item */
 .event-item {
   width: 100%;
@@ -50,28 +43,6 @@ body {
   border: 5px solid #badae4;
   border-radius: 40px;
   background-color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  position: relative;
-  box-sizing: border-box;
-  transition: transform 0.2s ease-out;
-}
-
-.event-item:after {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  content: '';
-  display: block;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  z-index: -1;
-  transition: transform 0.2s ease-out;
-}
-
-.event-item:hover:after {
-  transform: translate(4px, 4px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,7 +56,6 @@ body {
   background-size: 200% auto;
   transition: background-position 0.5s, transform 0.2s ease-out;
 }
-
 .event-item:hover {
   background-position: right center;
   transform: translateY(-4px);
@@ -97,11 +67,10 @@ body {
   margin-bottom: 10px;
   position: relative; /* Required for the pseudo-element */
   overflow: hidden; /* Hide the pseudo-element overflow */
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-
 .event-time::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -117,11 +86,9 @@ body {
   transition: transform 0.4s ease;
   z-index: -1; /* Ensure it stays behind the text */
 }
-
 .event-time:hover::after {
   transform: scaleX(1); /* Scale up to 1 on hover */
 }
-
 /* Styling for event place */
 .event-place {
   font-size: 16px;
@@ -140,7 +107,7 @@ body {
   cursor: pointer;
   display: inline-block;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    'Helvetica Neue', sans-serif;
+    "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
@@ -148,22 +115,18 @@ body {
   transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
     transform 0.1s;
 }
-
 .event-place:focus-visible {
   box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
   transition: box-shadow 0.2s;
 }
-
 .event-place:active {
   background-color: #f7f7f7;
   border-color: #000000;
   transform: scale(0.96);
 }
-
 .event-place:hover {
   outline: 0;
 }
-
 /* Styling for participant header */
 .participants-header {
   margin: 10px;
@@ -189,18 +152,15 @@ body {
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-
 .participants-header:hover {
   background-position: right center;
   /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }
-
 .participants-header:active {
   transform: scale(0.95);
 }
-
 /* Styling for participant list */
 .participant-list {
   background-color: #fff;
@@ -211,19 +171,16 @@ body {
   width: 100%;
   text-align: left;
 }
-
 .participant-item {
   margin-bottom: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 .participant-item i {
   margin-left: 10px;
   color: #007bff;
 }
-
 /* Styling for button-21 */
 .button-21 {
   align-items: center;
@@ -255,20 +212,16 @@ body {
   white-space: nowrap;
   overflow: hidden; /* Ensure pseudo-elements stay inside the button */
 }
-
 .button-21:active,
 .button-21:focus {
   outline: none;
 }
-
 .button-21:hover {
   background-position: -20px -20px;
 }
-
 .button-21:focus:not(:active) {
   box-shadow: rgba(40, 170, 255, 0.25) 0 0 0 0.125em;
 }
-
 .toggle-switch {
   position: relative;
   width: 60px;
@@ -276,11 +229,9 @@ body {
   margin-left: 10px;
   display: inline-block;
 }
-
 .toggle-switch input {
   display: none;
 }
-
 .toggle-slider {
   position: absolute;
   top: 0;
@@ -292,9 +243,8 @@ body {
   cursor: pointer;
   transition: background-color 0.4s;
 }
-
 .toggle-slider::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 26px;
   width: 26px;
@@ -304,64 +254,15 @@ body {
   border-radius: 50%;
   transition: transform 0.4s;
 }
-
 input:checked + .toggle-slider {
   background-color: #2196f3;
 }
-
 input:checked + .toggle-slider::before {
   transform: translateX(26px);
 }
-
 /* Fade-in animation */
 @keyframes fade-in {
   to {
     opacity: 1;
   }
-}
-
-/* Button-23 styling */
-.button-23 {
-  background-color: #ffffff;
-  border: 1px solid #222222;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #222222;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  padding: 13px 23px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
-    transform 0.1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
-}
-
-.button-23:focus-visible {
-  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow 0.2s;
-}
-
-.button-23:active {
-  background-color: #f7f7f7;
-  border-color: #000000;
-  transform: scale(0.96);
-}
-
-.button-23:disabled {
-  border-color: #dddddd;
-  color: #dddddd;
-  cursor: not-allowed;
-  opacity: 1;
 }
