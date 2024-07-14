@@ -1,28 +1,30 @@
-import React, { useState } from "react";
-import { useGlobalContext } from "../../Context";
-import "./EventList.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+
+import React, { useState } from 'react'
+import { useGlobalContext } from '../../Context'
+import './EventList.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
+
 
 function EventList() {
   const { Events, subscribeToEvent, unsubscribeFromEvent, user } =
-    useGlobalContext();
-  const [toggle, setToggle] = useState(false);
+    useGlobalContext()
+  const [toggle, setToggle] = useState(false)
 
   const handleToggle = (eventID) => {
     if (toggle) {
-      unsubscribeFromEvent(eventID);
+      unsubscribeFromEvent(eventID)
     } else {
-      subscribeToEvent(eventID);
+      subscribeToEvent(eventID)
     }
-    setToggle(!toggle);
-  };
+    setToggle(!toggle)
+  }
 
   const countParticipants = (participants) => {
-    return participants ? Object.keys(participants).length : 0;
-  };
+    return participants ? Object.keys(participants).length : 0
+  }
 
-  console.log("those are events", Events);
+  console.log('those are events', Events)
   return (
     <div className="event-list">
       <h2 className="event-list-header fade-in">All Events</h2>
@@ -32,7 +34,7 @@ function EventList() {
             event.participants &&
             Object.values(event.participants).some(
               (participant) => participant.email === user.email
-            );
+            )
           return (
             <li key={event.id} className="event-item">
               <h3 className="event-time">{event.time}</h3>
@@ -44,8 +46,8 @@ function EventList() {
                 {event.participants &&
                   Object.keys(event.participants).map((key) => (
                     <li key={key} className="participant-item">
-                      {event.participants[key].name} -{" "}
-                      {event.participants[key].email} -{" "}
+                      {event.participants[key].name} -{' '}
+                      {event.participants[key].email} -{' '}
                       {event.participants[key].phone}
                       <FontAwesomeIcon icon={faUser} />
                     </li>
@@ -53,13 +55,13 @@ function EventList() {
               </ul>
               <button
                 className={`button-21 ${
-                  isUserParticipating ? "toggle-on" : ""
+                  isUserParticipating ? 'toggle-on' : ''
                 }`}
                 onClick={() => handleToggle(event.id)}
               >
                 {isUserParticipating
-                  ? "Logout from event"
-                  : "Login to an event"}
+                  ? 'Logout from event'
+                  : 'Login to an event'}
               </button>
               <label className="toggle-switch">
                 <input
@@ -70,11 +72,11 @@ function EventList() {
                 <span className="toggle-slider"></span>
               </label>
             </li>
-          );
+          )
         })}
       </ul>
     </div>
-  );
+  )
 }
 
-export default EventList;
+export default EventList
