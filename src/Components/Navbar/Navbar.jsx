@@ -11,8 +11,12 @@ import Button from '@mui/material/Button'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import PersonIcon from '@mui/icons-material/Person'
+import { Link } from 'react-router-dom'
 
-const pages = ['create event', 'register to event']
+const pages = {
+  'create event': '/create-event',
+  'register to event': '/register-event',
+}
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null)
@@ -21,6 +25,7 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
   }
+
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget)
   }
@@ -29,30 +34,30 @@ function ResponsiveAppBar() {
     setAnchorElNav(null)
   }
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null)
+  // }
 
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box
-            component="a"
-            href="/"
+            component={Link}
+            to="/"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               alignItems: 'center',
               justifyContent: 'center',
-              height: '50px',
+              height: '60px',
             }}
           >
             <Box
               component="img"
-              src="path-to-your-image.jpg"
+              src="./logo1.png"
               sx={{
-                height: '100%',
+                height: '95%',
                 maxWidth: '100%',
                 objectFit: 'contain',
               }}
@@ -88,9 +93,14 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
+              {Object.keys(pages).map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link
+                    to={pages[page]}
+                    style={{ textDecoration: 'none', color: 'inherit' }}
+                  >
+                    <Typography textAlign="center">{page}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -120,9 +130,11 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {Object.keys(pages).map((page) => (
               <Button
                 key={page}
+                component={Link}
+                to={pages[page]}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -146,4 +158,5 @@ function ResponsiveAppBar() {
     </AppBar>
   )
 }
+
 export default ResponsiveAppBar
