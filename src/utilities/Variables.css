@@ -1,5 +1,5 @@
 .font-sans {
-  font-family: Arial, sans-serif;
+  font-family: Lato, arial, sans-serif;
 }
 .color-blue {
   color: cyan;
@@ -7,8 +7,10 @@
 .color-blueSecond {
   color: #51a6dd;
 }
-.color-white {color: #ffffff;}
+.color-white {
+  color: #ffffff;
+}
 
 .bg-blue {
-  background-color:lightgray;
+  background-color: lightgray;
 }
