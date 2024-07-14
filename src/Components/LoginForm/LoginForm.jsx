@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // import "../LoginForm/LoginForm.css";
 // import { useState, useEffect } from "react";
@@ -107,7 +108,7 @@ export const LoginForm = ({
 
               <div className="w-full flex items-center justify-center">
                 <p className="text-sm font-normal text-[#060606]">
-                  Don't have an account?{" "}
+                  Dont have an account?{" "}
                   <span className="font-semibold underline underline-offset-2 cursor-pointer">
                     Sign up for free
                   </span>
