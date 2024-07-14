@@ -4,6 +4,8 @@ import { LoginForm } from './Components/LoginForm/LoginForm'
 import EventList from './Components/LoginForm/EventList'
 import CreateEvent from './CreateEvent'
 import Navbar from './Components/Navbar/Navbar'
+import './App.css'
+
 function App() {
   return (
     <Router>
@@ -14,7 +16,7 @@ function App() {
         {/* <Route path="/Update/:MacbookId" element={<Update />} /> */}
         {/* <Route path="/addMacbook" element={<AddMacbook />} /> */}
         <Route path="/n" element={<Navbar />} />
-        {/* need to add layout, for now its in "/n" */}
+        <Route path="/create-event" element={<CreateEvent />} />
       </Routes>
     </Router>
   )
