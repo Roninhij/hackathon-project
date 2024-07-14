@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+
 // import "../LoginForm/LoginForm.css";
 // import { useState, useEffect } from "react";
 import coverImg from "../../../src/assets/images/coverImg.jpg";
@@ -8,6 +9,7 @@ import { useGlobalContext } from "../../Context";
 import "../../firebase_setup/firebase.js";
 import firebase from "firebase/compat/app";
 import EventList from "./EventList.jsx";
+
 export const LoginForm = ({
   action,
   userName,
@@ -18,7 +20,7 @@ export const LoginForm = ({
   setPassword,
   // handleSubmit,
 }) => {
-  const { handleGoogleSignIn, handleSignOut, user } = useGlobalContext();
+  const { handleGoogleSignIn, handleSignOut, user } = useGlobalContext()
 
   return (
     <>
@@ -104,6 +106,7 @@ export const LoginForm = ({
                   </span>
                 </p>
               </div>
+
             </div>
           </div>
           {/* <div className="loginIntro">
@@ -114,6 +117,7 @@ export const LoginForm = ({
             {/*Dont delete from here please!! :)  */}
             {/* <div onClick={handleGoogleSignIn}></div> */}
             {/* Corrected logout button */}
+
             {/* <div onClick={handleSignOut}></div> */}
           </div>
         </>
@@ -122,5 +126,5 @@ export const LoginForm = ({
         <EventList />
       )}
     </>
-  );
-};
+  )
+}
