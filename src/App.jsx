@@ -14,6 +14,7 @@ function App() {
         {/* <Route path="/Update/:MacbookId" element={<Update />} /> */}
         {/* <Route path="/addMacbook" element={<AddMacbook />} /> */}
         <Route path="/n" element={<Navbar />} />
+        {/* need to add layout, for now its in "/n" */}
       </Routes>
     </Router>
   )
