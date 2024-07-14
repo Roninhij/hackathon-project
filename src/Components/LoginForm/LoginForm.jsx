@@ -22,40 +22,19 @@ export const LoginForm = ({
     <>
       {!user ? (
         <>
-          <div className="header">
-            <div className="text">{action}</div>
-            <div className="underline"></div>
+          <div className="loginIntro">
+            <h1 className="bigHeader">Welcome to our Meatup Application</h1>
+            <h2 className="smallerHeader">please click below to login</h2>
           </div>
-          <div className="inputs">
-            {action === "Sign Up" && (
-              <Input
-                type="text"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-            )}
-            <Input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <Input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          {action === "Login" && (
-            <div className="forget-password">
-              Forgot Password? <span>Click Here!</span>
-            </div>
-          )}
           <div className="submit-container">
             {/*Dont delete from here please!! :)  */}
-            <div onClick={handleGoogleSignIn}>Login with google</div>
+            <div className="button-7" onClick={handleGoogleSignIn}>
+              Login with google
+            </div>
             {/* Corrected logout button */}
-            <div onClick={handleSignOut}>Logout</div>
-            <div>{user ? "ddfsd" : ""}</div>
+            <div className="button-7 logoutBtn" onClick={handleSignOut}>
+              Logout
+            </div>
           </div>
         </>
       ) : (
