@@ -20,6 +20,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Be my Guest. All rights reserved.
         </Typography>
       </Container>
+      {/*  */}
     </Box>
   )
 }
