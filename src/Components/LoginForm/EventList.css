@@ -1,13 +1,23 @@
-/* EventList.css */
+* {
+  background-color: rgba(255, 255, 255, 0);
+}
+
 html {
-  background-color: #e1e6e9;
+  background: rgb(205, 255, 255);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 /* Background for the entire EventList */
 .event-list {
-  background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
   padding: 20px;
   border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+  width: 80%; /* Center the event-list container */
+  margin: 0 auto; /* Center the event-list container */
+  background: url("https://img.freepik.com/premium-photo/group-diverse-young-men-having-fun-city-park-while-lying-meadow-multiethnic-male-friends_442523-743.jpg");
 }
 
 /* Styling for the event list header */
@@ -15,68 +25,154 @@ html {
   font-size: 40px;
   font-weight: bold;
   margin-bottom: 20px;
-  text-align: center; /* Center the header */
+  text-align: left; /* Align the text to the left */
   opacity: 0; /* Initial state for fade-in */
   animation: fade-in 2s forwards; /* Apply fade-in animation */
-  font-family: Arial, Helvetica, sans-serif;
+  color: #e5e9ee;
+  text-decoration: underline;
+  text-decoration-color: transparent; /* Initial state for underline animation */
+  transition: text-decoration-color 0.4s ease;
+}
+
+.event-list-header:hover {
+  text-decoration-color: #007bff; /* Color on hover */
 }
 
 /* Styling for each event item */
 .event-item {
+  width: 100%;
   margin-bottom: 20px;
   padding: 15px;
-  border: 1px solid #000;
-  border-radius: 8px;
+  border: 5px solid #badae4;
+  border-radius: 40px;
   background-color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  position: relative;
-  box-sizing: border-box;
-  transition: transform 0.2s ease-out;
-}
-
-.event-item:after {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  content: "";
-  display: block;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  z-index: -1;
-  transition: transform 0.2s ease-out;
-}
-
-.event-item:hover:after {
-  transform: translate(4px, 4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(
+    45deg,
+    #7feff7 0%,
+    #459497 51%,
+    #47759b 100%
+  );
+  background-size: 200% auto;
+  transition: background-position 0.5s, transform 0.2s ease-out;
 }
 
 .event-item:hover {
-  transform: translate(-4px, -4px);
+  background-position: right center;
+  transform: translateY(-4px);
 }
-
 /* Styling for event time */
 .event-time {
   font-size: 20px;
   font-weight: bold;
-  text-align: center; /* Center the event time */
+  margin-bottom: 10px;
+  position: relative; /* Required for the pseudo-element */
+  overflow: hidden; /* Hide the pseudo-element overflow */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.event-time::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    #007bff,
+    #00c3ff
+  ); /* Background color/gradient */
+  transform: scaleX(0); /* Initially scale down to 0 */
+  transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: -1; /* Ensure it stays behind the text */
+}
+
+.event-time:hover::after {
+  transform: scaleX(1); /* Scale up to 1 on hover */
 }
 
 /* Styling for event place */
 .event-place {
   font-size: 16px;
   margin-bottom: 10px;
-  text-align: center; /* Center the event place */
-  display: inline-block; /* To ensure it gets styled like a button */
+  padding: 10px 20px;
+  border: 1px solid #222;
+  border-radius: 8px;
+  background-color: #fff;
+  display: inline-block;
+  /* Apply button-23 styles */
+  background-color: #b0d7da;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  outline: none;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
+}
+
+.event-place:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+.event-place:active {
+  background-color: #f7f7f7;
+  border-color: #000000;
+  transform: scale(0.96);
+}
+
+.event-place:hover {
+  outline: 0;
 }
 
 /* Styling for participant header */
 .participants-header {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  text-align: center; /* Center the participants header */
+  margin: 10px;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: rgb(223, 234, 235);
+  border-radius: 10px;
+  display: block;
+  border: 0px;
+  font-weight: 700;
+  box-shadow: 0px 0px 14px -7px #161512;
+  background-image: linear-gradient(
+    45deg,
+    #5293a7 0%,
+    #90cac3 51%,
+    #e6e6e6 100%
+  );
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.participants-header:hover {
+  background-position: right center;
+  /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+
+.participants-header:active {
+  transform: scale(0.95);
 }
 
 /* Styling for participant list */
@@ -86,29 +182,20 @@ html {
   padding: 10px;
   border-radius: 8px;
   list-style-type: none;
-  margin: 0;
-  padding: 10px;
-  text-decoration: underline;
-  font-weight: bold;
+  width: 100%;
+  text-align: left;
 }
 
-/* Styling for participant items */
 .participant-item {
   margin-bottom: 5px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .participant-item i {
   margin-left: 10px;
   color: #007bff;
-}
-
-/* Styling for the login/logout button */
-.event-action {
-  margin-top: 10px;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 /* Styling for button-21 */
@@ -205,50 +292,4 @@ input:checked + .toggle-slider::before {
   to {
     opacity: 1;
   }
-}
-
-/* Button-23 styling */
-.button-23 {
-  background-color: #ffffff;
-  border: 1px solid #222222;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: #222222;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  margin: 0;
-  outline: none;
-  padding: 13px 23px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  touch-action: manipulation;
-  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
-    transform 0.1s;
-  user-select: none;
-  -webkit-user-select: none;
-  width: auto;
-}
-
-.button-23:focus-visible {
-  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-  transition: box-shadow 0.2s;
-}
-
-.button-23:active {
-  background-color: #f7f7f7;
-  border-color: #000000;
-  transform: scale(0.96);
-}
-
-.button-23:disabled {
-  border-color: #dddddd;
-  color: #dddddd;
-  cursor: not-allowed;
-  opacity: 1;
 }
