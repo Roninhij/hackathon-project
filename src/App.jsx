@@ -1,8 +1,12 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { LoginForm } from './Components/LoginForm/LoginForm'
-import EventList from './Components/LoginForm/EventList'
-import CreateEvent from './CreateEvent/CreateEvent'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LoginForm } from "./Components/LoginForm/LoginForm";
+import EventList from "./Components/LoginForm/EventList";
+import CreateEvent from "./CreateEvent";
+import "./App.css";
+
+
+
 function App() {
   return (
     <Router>
