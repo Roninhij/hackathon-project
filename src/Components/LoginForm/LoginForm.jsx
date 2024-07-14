@@ -63,6 +63,7 @@ export const LoginForm = ({
             >
               Log In
             </div>
+            {/*Dont delete from here please!! :)  */}
             <div onClick={handleGoogleSignIn}>Login with google</div>
             {/* Corrected logout button */}
             <div onClick={handleSignOut}>Logout</div>
