@@ -4,8 +4,8 @@
 
 html {
   background: rgb(205, 255, 255);
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 /* Background for the entire EventList */
@@ -17,7 +17,7 @@ html {
   align-items: flex-start; /* Align items to the start (left) */
   width: 80%; /* Center the event-list container */
   margin: 0 auto; /* Center the event-list container */
-  background: url("https://img.freepik.com/premium-photo/group-diverse-young-men-having-fun-city-park-while-lying-meadow-multiethnic-male-friends_442523-743.jpg");
+  background: url('https://img.freepik.com/premium-photo/group-diverse-young-men-having-fun-city-park-while-lying-meadow-multiethnic-male-friends_442523-743.jpg');
 }
 
 /* Styling for the event list header */
@@ -46,6 +46,28 @@ html {
   border: 5px solid #badae4;
   border-radius: 40px;
   background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+  box-sizing: border-box;
+  transition: transform 0.2s ease-out;
+}
+
+.event-item:after {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  z-index: -1;
+  transition: transform 0.2s ease-out;
+}
+
+.event-item:hover:after {
+  transform: translate(4px, 4px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,11 +93,11 @@ html {
   margin-bottom: 10px;
   position: relative; /* Required for the pseudo-element */
   overflow: hidden; /* Hide the pseudo-element overflow */
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .event-time::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -114,7 +136,7 @@ html {
   cursor: pointer;
   display: inline-block;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", sans-serif;
+    'Helvetica Neue', sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
@@ -268,7 +290,7 @@ html {
 }
 
 .toggle-slider::before {
-  content: "";
+  content: '';
   position: absolute;
   height: 26px;
   width: 26px;
@@ -292,4 +314,50 @@ input:checked + .toggle-slider::before {
   to {
     opacity: 1;
   }
+}
+
+/* Button-23 styling */
+.button-23 {
+  background-color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+}
+
+.button-23:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+.button-23:active {
+  background-color: #f7f7f7;
+  border-color: #000000;
+  transform: scale(0.96);
+}
+
+.button-23:disabled {
+  border-color: #dddddd;
+  color: #dddddd;
+  cursor: not-allowed;
+  opacity: 1;
 }
