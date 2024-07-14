@@ -1,37 +1,51 @@
-import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
-import Container from '@mui/material/Container'
-import Button from '@mui/material/Button'
-import Tooltip from '@mui/material/Tooltip'
-import MenuItem from '@mui/material/MenuItem'
-import PersonIcon from '@mui/icons-material/Person'
+// src/Components/Navbar/ResponsiveAppBar.jsx
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import PersonIcon from "@mui/icons-material/Person";
+import { useGlobalContext } from "../../Context"; // Import the context
 
-const pages = ['create event', 'register to event']
+const pages = [
+  { name: "Home", path: "/home" },
+  { name: "Create Event", path: "/create-event" },
+  { name: "Event List", path: "/event-list" },
+];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const { handleSignOut } = useGlobalContext(); // Use the context
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
   const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget)
-  }
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
+    setAnchorElUser(null);
+  };
+
+  const handleLogout = () => {
+    handleSignOut();
+    navigate("/login"); // Navigate to the login page after logout
+  };
 
   return (
     <AppBar position="static">
@@ -45,15 +59,14 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
               alignItems: "center",
               justifyContent: "center",
-              height: "50px",
+              height: "90px",
             }}
           >
             <Box
               component="img"
               src="./logo1.png"
-             
               sx={{
-                height: "100%",
+                height: "150%",
                 maxWidth: "100%",
                 objectFit: "contain",
               }}
@@ -90,8 +103,15 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link
+                      to={page.path}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {page.name}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -123,16 +143,21 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                <Link
+                  to={page.path}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  {page.name}
+                </Link>
               </Button>
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
             <Tooltip title="Log-in">
               <IconButton
                 onClick={handleOpenUserMenu}
@@ -141,10 +166,17 @@ function ResponsiveAppBar() {
                 <PersonIcon />
               </IconButton>
             </Tooltip>
+            <Button
+              onClick={handleLogout}
+              sx={{ my: 2, color: "white", display: "block", ml: 2 }}
+            >
+              Logout
+            </Button>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
-export default ResponsiveAppBar
+
+export default ResponsiveAppBar;

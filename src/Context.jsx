@@ -1,3 +1,4 @@
+// src/Context.jsx
 import { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -16,21 +17,12 @@ export const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [Events, setEvents] = useState([]);
-
   const [filteredEvents, setFilteredSetEvents] = useState([]);
-
   const [categories, setCategories] = useState([]);
   const [user, setUser] = useState(null);
   const [subscribedEvents, setSubscribedEvents] = useState({});
 
   useEffect(() => {
-    setUser(firebase.auth().currentUser);
-    if (user) {
-      console.log("User is signed in:", user.email);
-    } else {
-      console.log("No user is signed in.");
-    }
-
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
@@ -55,7 +47,7 @@ export const AppProvider = ({ children }) => {
       });
       setSubscribedEvents(newSubscribedEvents);
     });
-  }, []);
+  }, [user]);
 
   const handleGoogleSignIn = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -91,18 +83,15 @@ export const AppProvider = ({ children }) => {
 
   const filterCategories = (e) => {
     setFilteredSetEvents(Events);
-    // Assuming 'Events' is defined elsewhere in your scope
-    //  return Events;
     setFilteredSetEvents(
       Events.filter((item) => item.categoryName === e.target.textContent)
     );
-    // Do something with 'filteredEvents', such as updating the UI or storing it
   };
 
   const handleAddEvent = async (Event) => {
     setLoading(true);
     try {
-      const response = await axios.post(url, Event);
+      await axios.post(url, Event);
       toast.success("Successfully created!", {
         position: "top-center",
       });
@@ -125,11 +114,10 @@ export const AppProvider = ({ children }) => {
   const handleSignOut = async () => {
     try {
       await firebase.auth().signOut();
-      // Provide feedback to the user that they have been signed out
       alert("Signed out successfully");
+      setUser(null); // Ensure user state is cleared
     } catch (error) {
       console.error("Error signing out:", error);
-      // Optionally, provide feedback to the user about the error
       alert("Failed to sign out. Please try again.");
     }
   };
@@ -161,8 +149,7 @@ export const AppProvider = ({ children }) => {
   const getCategories = () => {
     const result = {};
     Events.forEach((item) => {
-      if (result[item.categoryName]) {
-      } else {
+      if (!result[item.categoryName]) {
         result[item.categoryName] = 1;
       }
     });
@@ -173,8 +160,8 @@ export const AppProvider = ({ children }) => {
   function addEvent(eventData) {
     firebase.database().ref("events").push(eventData);
   }
+
   const subscribeToEvent = (eventID) => {
-    console.log(user);
     const currentUserID = user.uid;
     const dbRef = firebase.database().ref(`events/${eventID}/participants`);
     dbRef.transaction((currentParticipants) => {
