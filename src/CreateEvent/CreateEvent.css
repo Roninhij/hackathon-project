@@ -1,0 +1,111 @@
+.main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 15rem;
+  background-color: #e5f5fd;
+}
+
+.form-container {
+  font-family: monospace;
+  font-size: 1.5rem;
+  color: #4eb5ff;
+  border-radius: 54px;
+  background: #cee6f6;
+  box-shadow: 16px 16px 25px #2b8eb8, -16px -16px 25px #ffffff;
+  padding: 20px;
+  width: 25%;
+  height: 30rem;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/* Add margin-bottom to create spacing between divs */
+.event-time-container,
+.event-place-container,
+.number-of-paticipants-container {
+  margin-bottom: 4.5rem; /* Adjust this value as needed */
+}
+
+.btn-form-container {
+  border: none;
+  color: #fff;
+  background-image: linear-gradient(30deg, #006eff, #4ce3f7);
+  border-radius: 20px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  padding: 0.6em 1.5em;
+}
+
+.btn-form-container:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+}
+
+.input-container {
+  border: 2px solid transparent;
+  width: 15em;
+  height: 2.5em;
+  padding-left: 0.8em;
+  outline: none;
+  overflow: hidden;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+
+.input-container:hover,
+.input-container:focus {
+  border: 2px solid #4a9dec;
+  box-shadow: 0px 0px 0px 7px rgb(74, 157, 236, 20%);
+  background-color: white;
+}
+
+/* Adjust .number-of-paticipants-container to display items in a row */
+.number-of-paticipants-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* Add spacing between the items */
+}
+
+.plus-minus {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 950;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(
+    0deg,
+    rgb(185, 225, 240) 0%,
+    rgb(143, 178, 207) 100%
+  );
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #7496ab98;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+}
+
+.plus-minus svg {
+  margin-right: 6px;
+}
+
+.plus-minus:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #82b1d798;
+}
+
+.plus-minus:active {
+  box-shadow: 0 0.3em 1em -0.5em #88afca98;
+}
+
+.event-time-container {
+  margin-top: 3rem;
+}
