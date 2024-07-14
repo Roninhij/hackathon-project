@@ -1,8 +1,10 @@
+
 import React, { useState } from 'react'
 import { useGlobalContext } from '../../Context'
 import './EventList.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+
 
 function EventList() {
   const { Events, subscribeToEvent, unsubscribeFromEvent, user } =
