@@ -35,8 +35,8 @@ function CreateEvent() {
           <input
             className="input-container"
             id="eventDate"
-            type="text"
-            value={time}
+            type="date"
+            value={date}
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
@@ -45,7 +45,7 @@ function CreateEvent() {
           <input
             className="input-container"
             id="eventTime"
-            type="text"
+            type="time"
             value={time}
             onChange={(e) => setTime(e.target.value)}
           />
@@ -83,12 +83,10 @@ function CreateEvent() {
 
         <div className="event-info-container">
           <label htmlFor="eventInfo">Event info:</label>
-          <textarea
-            cols={30}
-            rows={30}
+          <input
             className="input-container"
             id="eventInfo"
-            type=""
+            type="text"
             value={info}
             onChange={(e) => setInfo(e.target.value)}
           />
