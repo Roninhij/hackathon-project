@@ -35,6 +35,8 @@ function EventList() {
             );
           return (
             <li key={event.id} className="event-item">
+              <h3 className="event-info">{event.info}</h3>
+              <h3 className="event-date">{event.date}</h3>
               <h3 className="event-time">{event.time}</h3>
               <p className="event-place button-89">Place: {event.place}</p>
               <h4 className="participants-header">
