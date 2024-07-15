@@ -26,7 +26,7 @@ function EventList() {
   return (
     <div className="event-list">
       <h2 className="event-list-header fade-in">All Events</h2>
-      <ul>
+      <ul className="cardsContainer">
         {Events.map((event) => {
           const isUserParticipating =
             event.participants &&

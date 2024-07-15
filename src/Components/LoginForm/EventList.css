@@ -4,6 +4,36 @@
 body {
 }
 
+.event-item {
+  margin: 30px;
+}
+
+.cardsContainer {
+  width: 100%;
+  justify-content: center;
+  display: grid;
+  column-gap: 1%;
+  grid-template-columns: repeat(4, 0.fr);
+}
+
+@media (min-width: 768px) {
+  .cardsContainer {
+    grid-template-columns: repeat(2, 1fr); /* 3 columns for tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardsContainer {
+    grid-template-columns: repeat(3, 1fr); /* 4 columns for desktops */
+  }
+}
+
+@media (min-width: 1200px) {
+  .cardsContainer {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns for desktops */
+  }
+}
+
 /* Background for the entire EventList */
 .event-list {
   padding: 20px;
